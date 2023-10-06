@@ -6,5 +6,5 @@ module emailClient {
     requires javafx.web;
 
     opens pl.pierogmichal;
-    opens pl.pierogmichal.view;
+    opens pl.pierogmichal.controller;
 }
