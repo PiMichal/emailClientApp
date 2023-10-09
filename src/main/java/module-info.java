@@ -9,4 +9,5 @@ module emailClient {
 
     opens pl.pierogmichal;
     opens pl.pierogmichal.controller;
+    opens pl.pierogmichal.model;
 }
