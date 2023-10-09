@@ -1,13 +1,17 @@
 package pl.pierogmichal.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.web.WebView;
 import pl.pierogmichal.EmailManager;
 import pl.pierogmichal.view.ViewFactory;
 
-public class MainWindowController extends BaseController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainWindowController extends BaseController implements Initializable {
     public MainWindowController(EmailManager emailManager, ViewFactory viewFactory, String fxmlName) {
         super(emailManager, viewFactory, fxmlName);
     }
@@ -18,7 +22,7 @@ public class MainWindowController extends BaseController {
     private TableView<?> emailsTableView;
 
     @FXML
-    private TreeView<?> emailsTreeView;
+    private TreeView<String> emailsTreeView;
 
     @FXML
     void optionsAction() {
@@ -31,4 +35,13 @@ public class MainWindowController extends BaseController {
         viewFactory.showLoginWindow();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setUpEmailsTreeView();
+    }
+
+    private void setUpEmailsTreeView() {
+        emailsTreeView.setRoot(emailManager.getFoldersRoot());
+        emailsTreeView.setShowRoot(false);
+    }
 }
