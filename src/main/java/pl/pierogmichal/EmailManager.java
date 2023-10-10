@@ -8,6 +8,7 @@ import pl.pierogmichal.controller.services.FolderUpdaterService;
 import pl.pierogmichal.model.EmailAccount;
 import pl.pierogmichal.model.EmailMessage;
 import pl.pierogmichal.model.EmailTreeItem;
+import pl.pierogmichal.view.IconResolver;
 
 import javax.mail.Flags;
 import javax.mail.Folder;
@@ -19,6 +20,7 @@ public class EmailManager {
     private EmailMessage selectedMessage;
     private EmailTreeItem<String> selectedFolder;
     private ObservableList<EmailAccount> emailAccounts = FXCollections.observableArrayList();
+    private IconResolver iconResolver = new IconResolver();
 
     public ObservableList<EmailAccount> getEmailAccounts() {
         return emailAccounts;
@@ -60,6 +62,7 @@ public class EmailManager {
     public void addEmailAccount(EmailAccount emailAccount) {
         emailAccounts.add(emailAccount);
         EmailTreeItem<String> treeItem = new EmailTreeItem<>(emailAccount.getAddress());
+        treeItem.setGraphic(iconResolver.getIconForFolder(emailAccount.getAddress()));
         FetchFoldersSerivce fetchFoldersSerivce = new FetchFoldersSerivce(emailAccount.getStore(), treeItem, folderList);
         fetchFoldersSerivce.start();
 
