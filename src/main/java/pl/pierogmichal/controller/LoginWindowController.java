@@ -72,7 +72,7 @@ public class LoginWindowController extends BaseController implements Initializab
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        emailAddressField.setText("emailapp@wp.pl");
-        passwordField.setText("haslo321321");
+        emailAddressField.setText("emailappclient@gmail.com");
+        passwordField.setText("xxag ovpo jkng lect");
     }
 }

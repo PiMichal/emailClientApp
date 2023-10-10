@@ -1,5 +1,7 @@
 package pl.pierogmichal;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import pl.pierogmichal.controller.services.FetchFoldersSerivce;
 import pl.pierogmichal.controller.services.FolderUpdaterService;
@@ -16,6 +18,11 @@ public class EmailManager {
 
     private EmailMessage selectedMessage;
     private EmailTreeItem<String> selectedFolder;
+    private ObservableList<EmailAccount> emailAccounts = FXCollections.observableArrayList();
+
+    public ObservableList<EmailAccount> getEmailAccounts() {
+        return emailAccounts;
+    }
 
     public EmailMessage getSelectedMessage() {
         return selectedMessage;
@@ -51,6 +58,7 @@ public class EmailManager {
     }
 
     public void addEmailAccount(EmailAccount emailAccount) {
+        emailAccounts.add(emailAccount);
         EmailTreeItem<String> treeItem = new EmailTreeItem<>(emailAccount.getAddress());
         FetchFoldersSerivce fetchFoldersSerivce = new FetchFoldersSerivce(emailAccount.getStore(), treeItem, folderList);
         fetchFoldersSerivce.start();

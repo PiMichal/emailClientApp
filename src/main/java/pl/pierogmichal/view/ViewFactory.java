@@ -5,10 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.pierogmichal.EmailManager;
-import pl.pierogmichal.controller.BaseController;
-import pl.pierogmichal.controller.LoginWindowController;
-import pl.pierogmichal.controller.MainWindowController;
-import pl.pierogmichal.controller.OptionsWindowController;
+import pl.pierogmichal.controller.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,6 +59,12 @@ public class ViewFactory {
 
     public void showOptionsWindow(){
         BaseController controller = new OptionsWindowController(emailManager, this, "/layout/OptionsWindow.fxml");
+
+        initializeStage(controller);
+    }
+
+    public void showComposeMessageWindow(){
+        BaseController controller = new ComposeMessageController(emailManager, this, "/layout/ComposeMessageWindow.fxml");
 
         initializeStage(controller);
     }
