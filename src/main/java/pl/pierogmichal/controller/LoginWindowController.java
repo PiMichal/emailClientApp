@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pl.pierogmichal.EmailManager;
+import pl.pierogmichal.controller.services.Config;
 import pl.pierogmichal.controller.services.LoginService;
 import pl.pierogmichal.model.EmailAccount;
 import pl.pierogmichal.view.ViewFactory;
@@ -18,6 +19,8 @@ public class LoginWindowController extends BaseController implements Initializab
     public LoginWindowController(EmailManager emailManager, ViewFactory viewFactory, String fxmlName) {
         super(emailManager, viewFactory, fxmlName);
     }
+    private final String emailAddress = Config.email;
+    private final String password = Config.password;
     @FXML
     private TextField emailAddressField;
 
@@ -38,7 +41,7 @@ public class LoginWindowController extends BaseController implements Initializab
 
                 switch (emailLoginResult) {
                     case SUCCESS:
-                        System.out.println("login succesfull!!!" + emailAccount);
+                        System.out.println("Login succesfull: " + emailAccount);
                         if (!viewFactory.isMainViewInitialized()) {
                             viewFactory.showMainWindow();
                         }
@@ -69,10 +72,9 @@ public class LoginWindowController extends BaseController implements Initializab
         }
         return true;
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        emailAddressField.setText("emailappclient@gmail.com");
-        passwordField.setText("xxag ovpo jkng lect");
+        emailAddressField.setText(emailAddress);
+        passwordField.setText(password);
     }
 }

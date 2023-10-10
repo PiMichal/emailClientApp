@@ -3,6 +3,7 @@ package pl.pierogmichal.controller.services;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import pl.pierogmichal.model.EmailTreeItem;
+import pl.pierogmichal.view.IconResolver;
 
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -17,6 +18,7 @@ public class FetchFoldersSerivce extends Service<Void> {
     private Store store;
     public EmailTreeItem<String> foldersRoot;
     private List<Folder> folderList;
+    private IconResolver iconResolver = new IconResolver();
 
     public FetchFoldersSerivce(Store store, EmailTreeItem<String> foldersRoot, List<Folder> folderList) {
         this.store = store;
@@ -44,6 +46,7 @@ public class FetchFoldersSerivce extends Service<Void> {
         for (Folder folder : folders) {
             folderList.add(folder);
             EmailTreeItem<String> emailTreeItem = new EmailTreeItem<>(folder.getName());
+            emailTreeItem.setGraphic(iconResolver.getIconForFolder(folder.getName()));
             foldersRoot.getChildren().add((emailTreeItem));
             foldersRoot.setExpanded(true);
             fetchMessagesOnFolder(folder, emailTreeItem);
