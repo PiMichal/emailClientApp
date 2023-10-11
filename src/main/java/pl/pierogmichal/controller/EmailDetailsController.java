@@ -58,8 +58,8 @@ public class EmailDetailsController extends BaseController implements Initializa
         if (emailMessage.hasAttachments()) {
             for (MimeBodyPart mimeBodyPart: emailMessage.getAttachmentList()) {
                 try {
-                    AttachmentButton button = new AttachmentButton(mimeBodyPart);
-                    hBoxDownloads.getChildren().add(button);
+                    AttachmentButton attachmentButton = new AttachmentButton(mimeBodyPart);
+                    hBoxDownloads.getChildren().add(attachmentButton);
                 } catch (MessagingException e) {
                     e.printStackTrace();
                 }
