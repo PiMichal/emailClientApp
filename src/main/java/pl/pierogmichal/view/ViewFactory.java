@@ -48,7 +48,10 @@ public class ViewFactory {
         initializeStage(controller);
 
     }
-
+    public void showEmailDetailsWindow() {
+        BaseController controller = new EmailDetailsController(emailManager, this, "/layout/EmailDetailsWindow.fxml");
+        initializeStage(controller);
+    }
     public void showMainWindow(){
 
         BaseController controller = new MainWindowController(emailManager, this, "/layout/MainWindow.fxml");
