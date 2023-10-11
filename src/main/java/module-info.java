@@ -6,6 +6,7 @@ module emailClient {
     requires javafx.web;
     requires activation;
     requires java.mail;
+    requires java.desktop;
 
     opens pl.pierogmichal;
     opens pl.pierogmichal.controller;
