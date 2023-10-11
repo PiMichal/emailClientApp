@@ -1,26 +1,20 @@
 package pl.pierogmichal.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pl.pierogmichal.EmailManager;
-import pl.pierogmichal.controller.services.Config;
 import pl.pierogmichal.controller.services.LoginService;
 import pl.pierogmichal.model.EmailAccount;
 import pl.pierogmichal.view.ViewFactory;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class LoginWindowController extends BaseController implements Initializable {
+public class LoginWindowController extends BaseController {
     public LoginWindowController(EmailManager emailManager, ViewFactory viewFactory, String fxmlName) {
         super(emailManager, viewFactory, fxmlName);
     }
-    private final String emailAddress = Config.email;
-    private final String password = Config.password;
+
     @FXML
     private TextField emailAddressField;
 
@@ -71,10 +65,5 @@ public class LoginWindowController extends BaseController implements Initializab
             return false;
         }
         return true;
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        emailAddressField.setText(emailAddress);
-        passwordField.setText(password);
     }
 }

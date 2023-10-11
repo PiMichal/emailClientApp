@@ -36,5 +36,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-
-/src/main/java/pl/pierogmichal/controller/services/Config.java
