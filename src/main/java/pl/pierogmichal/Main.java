@@ -13,9 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends Application {
-    public static void main(String[] args) {
-        launch(args);
-    }
+
     private PersistenceAccess persistenceAccess = new PersistenceAccess();
     private EmailManager emailManager = new EmailManager();
 
